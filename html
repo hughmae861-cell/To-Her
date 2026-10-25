@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+
+    <style>
+        /* GENERAL DESIGN */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f0ff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background-color: #4b277a;
+            padding: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        /* HOME */
+        header {
+            background: linear-gradient(135deg, #4b277a, #9b72cf);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .profile-picture {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 45px 10%;
+            margin: 25px auto;
+            max-width: 1100px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px #ddd;
+        }
+
+        h2 {
+            color: #4b277a;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #9b72cf;
+            padding-bottom: 8px;
+        }
+
+        /* ABOUT ME */
+        #about p {
+            margin-bottom: 10px;
+        }
+
+        /* MY SKILLS */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill {
+            background-color: #eee3ff;
+            color: #4b277a;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background-color: #4b277a;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* MY PROJECTS */
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .project-card {
+            flex: 1 1 250px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #faf7ff;
+            transition: 0.3s;
+employees = []
+
+def add_employee():
+    print("\n--- Add Employee ---")
+    emp_id = input("Enter Employee ID: ").strip()
+    if emp_id in employees:
+        print(f"Error: ID {emp_id} already exists!")
+        return
+    
+    name = input("Enter Name: ").strip()
+    position = input("Enter Position: ").strip()
+    salary = input("Enter Salary: ").strip()
+    
+    employees[emp_id] = {
+        "name": name,
+        "position": position,
+        "salary": salary
+    }
+    print(f"Employee {name} added successfully!")
+
+def view_employees():
+    print("\n--- All Employee Records ---")
+    if not employees:
+        print("No records found.")
+        return
+    
+    print(f"{'ID':<10} {'Name':<20} {'Position':<15} {'Salary'}")
+    print("-" * 60)
+    for emp_id, info in employees.items():
+        print(f"{emp_id:<10} {info['name']:<20} {info['position']:<15} {info['salary']}")
+
+def search_employee():
+    print("\n--- Search Employee ---")
+    emp_id = input("Enter Employee ID to search: ").strip()
+    if emp_id in employees:
+        info = employees[emp_id]
+        print(f"\nFound:\nID: {emp_id}\nName: {info['name']}\nPosition: {info['position']}\nSalary: {info['salary']}")
+    else:
+        print(f"Employee with ID {emp_id} not found.")
+
+def delete_employee():
+    print("\n--- Delete Employee ---")
+    emp_id = input("Enter Employee ID to delete: ").strip()
+    if emp_id in employees:
+        deleted = employees.pop(emp_id)
+        print(f"Employee {deleted['name']} deleted successfully!")
+    else:
+        print(f"Employee with ID {emp_id} not found.")
+
+def main():
+    while True:
+        print("\n====== EMPLOYEE SYSTEM ======")
+        print("1. Add Employee")
+        print("2. View All Records")
+        print("3. Search Employee")
+        print("4. Delete Employee")
+        print("5. Exit")
+        
+        choice = input("Choose an option (1-5): ").strip()
+        
+        if choice == '1':
+            add_employee()
+        elif choice == '2':
+            view_employees()
+        elif choice == '3':
+            search_employee()
+        elif choice == '4':
+            delete_employee()
+        elif choice == '5':
+            print("Exiting system. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter 1-5.")
+
+if __name__ == "__main__":
+    main()
